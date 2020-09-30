@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     },
   );
 
-  productImages.associate = models => { };
+  // productImages.associate = models => { };
 
   return productImages;
 };

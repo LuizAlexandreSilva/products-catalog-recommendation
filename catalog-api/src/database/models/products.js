@@ -2,7 +2,10 @@ module.exports = (sequelize, DataTypes) => {
   const products = sequelize.define(
     'products',
     {
-      productId: DataTypes.STRING,
+      productId: {
+        type: DataTypes.STRING,
+        primaryKey: true,
+      },
       name: DataTypes.STRING,
       description: DataTypes.TEXT,
       brand: DataTypes.STRING,
@@ -15,7 +18,12 @@ module.exports = (sequelize, DataTypes) => {
     },
   );
 
-  products.associate = models => { };
+  products.associate = models => {
+    products.belongsToMany(models.categories, {
+      through: 'product_categories',
+      foreignKey: 'product_id',
+    });
+  };
 
   return products;
 };
