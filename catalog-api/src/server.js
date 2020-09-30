@@ -1,15 +1,13 @@
 const express = require('express');
 const { sequelize } = require('./database/models');
+const routes = require('./routes');
 
 const app = express();
+const PORT = 3333;
 
 app.use(express.json());
 
-const PORT = 3333;
-
-app.get('/', (req, res) => {
-  res.json({ message: 'Hello world' });
-});
+app.use(routes);
 
 const tesDbConnection = async () => {
   try {

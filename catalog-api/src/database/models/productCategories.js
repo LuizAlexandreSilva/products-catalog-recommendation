@@ -2,15 +2,27 @@ module.exports = (sequelize, DataTypes) => {
   const productCategories = sequelize.define(
     'productCategories',
     {
-      productId: DataTypes.STRING,
-      categoryId: DataTypes.STRING,
+      productId: {
+        type: DataTypes.STRING,
+        references: {
+          model: 'croducts',
+          key: 'product_id',
+        },
+      },
+      categoryId: {
+        type: DataTypes.STRING,
+        references: {
+          model: 'categories',
+          key: 'category_id',
+        },
+      },
     },
     {
       underscored: true,
     },
   );
 
-  productCategories.associate = models => { };
+  // productCategories.associate = models => { };
 
   return productCategories;
 };

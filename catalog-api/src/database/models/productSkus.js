@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
     },
   );
 
-  productSkus.associate = models => { };
+  // productSkus.associate = models => { };
 
   return productSkus;
 };
