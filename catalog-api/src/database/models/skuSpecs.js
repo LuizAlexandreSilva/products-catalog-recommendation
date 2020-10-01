@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
-  const productSkus = sequelize.define(
-    'productSkus',
+  const skuSpecs = sequelize.define(
+    'skuSpecs',
     {
       skuId: DataTypes.STRING,
       name: DataTypes.STRING,
@@ -11,7 +11,9 @@ module.exports = (sequelize, DataTypes) => {
     },
   );
 
-  // productSkus.associate = models => { };
+  skuSpecs.associate = models => {
+    skuSpecs.belongsTo(models.productSkus, { foreignKey: 'skuId' });
+  };
 
-  return productSkus;
+  return skuSpecs;
 };

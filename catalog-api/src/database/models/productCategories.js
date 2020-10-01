@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
       productId: {
         type: DataTypes.STRING,
         references: {
-          model: 'croducts',
+          model: 'products',
           key: 'product_id',
         },
       },

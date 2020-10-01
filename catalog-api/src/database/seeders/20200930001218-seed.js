@@ -5,6 +5,7 @@ module.exports = {
     const categories = [];
     const products = [];
     const productCategories = [];
+    const productImages = [];
     const skus = [];
     const skuSpecs = [];
 
@@ -20,6 +21,20 @@ module.exports = {
           price_cash: Number(item.details.precoavista),
           created_at: new Date(),
           updated_at: new Date(),
+        });
+      }
+
+      const keys = Object.keys(item.images);
+      if (keys.length) {
+        keys.map(key => {
+          if (item.images[key]) {
+            productImages.push({
+              product_id: item.id,
+              url: item.images[key],
+              created_at: new Date(),
+              updated_at: new Date(),
+            });
+          }
         });
       }
 
@@ -80,6 +95,7 @@ module.exports = {
     await queryInterface.bulkInsert('categories', categories);
     await queryInterface.bulkInsert('products', products);
     await queryInterface.bulkInsert('product_categories', productCategories);
+    await queryInterface.bulkInsert('product_images', productImages);
     await queryInterface.bulkInsert('product_skus', skus);
     await queryInterface.bulkInsert('sku_specs', skuSpecs);
   },
@@ -87,6 +103,7 @@ module.exports = {
   down: async (queryInterface, Sequelize) => {
     await queryInterface.bulkDelete('sku_specs');
     await queryInterface.bulkDelete('product_skus');
+    await queryInterface.bulkDelete('product_images');
     await queryInterface.bulkDelete('product_categories');
     await queryInterface.bulkDelete('products');
     await queryInterface.bulkDelete('categories');
