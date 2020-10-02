@@ -1,14 +1,14 @@
-const express = require('express')
+const express = require('express');
+const routes = require('./routes');
 
-const app = express()
-const PORT = 3334
+const PORT = 3334;
 
-app.use(express.json())
+const app = express();
 
-app.use('/', (req, res) => {
-  res.send('Hello world')
-})
+app.use(express.json());
+
+app.use(routes);
 
 app.listen(PORT, () => {
-  console.log(`🚀 Recommendation API listening at port ${PORT}!`)
-})
+  console.log(`🚀 Recommendation API listening at port ${PORT}!`);
+});
