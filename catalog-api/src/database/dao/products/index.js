@@ -11,7 +11,7 @@ const ProductsDAO = {
     });
 
     if (!foundProduct) {
-      throw new Error('Product not found');
+      return null;
     }
 
     return foundProduct;

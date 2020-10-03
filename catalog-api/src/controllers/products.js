@@ -1,5 +1,4 @@
 const ProductsDAO = require('../database/dao/products');
-const productResponseFormatter = require('../formatters/products');
 
 const productsController = {
   index: async (req, res) => {
@@ -7,9 +6,11 @@ const productsController = {
     const { format } = req.query;
 
     const product = await ProductsDAO.read({ id, format });
-    const response = productResponseFormatter.get(product);
+    if (!product) {
+      return res.json();
+    }
 
-    return res.json(response);
+    return res.json(product);
   },
 };
 

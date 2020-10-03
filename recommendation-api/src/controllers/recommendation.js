@@ -7,7 +7,7 @@ const recommendationController = {
     let recommendedIds;
 
     if (!dataFormat) {
-      dataFormat = 'compact';
+      dataFormat = 'complete';
     }
 
     if (!maxProducts || maxProducts < 10) {

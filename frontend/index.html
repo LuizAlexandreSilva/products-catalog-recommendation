@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="src/styles/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <title>Vitrine</title>
+</head>
+
+<body onload="init()">
+  <section id="popular-container" class="container">
+    <h2>Populares</h2>
+    <button class="arrow arrow-left" onclick="goToLeft('most-popular-section')">&lt;</button>
+    <ul id="most-popular-section" class="product-section"></ul>
+    <button class="arrow arrow-right" onclick="goToRight('most-popular-section')">&gt;</button>
+  </section>
+
+  <section id="reduction-container" class="container">
+    <h2>Ofertas</h2>
+    <button class="arrow arrow-left" onclick="goToLeft('price-reduction-section')">&lt;</button>
+    <ul id="price-reduction-section" class="product-section"></ul>
+    <button class="arrow arrow-right" onclick="goToRight('price-reduction-section')">&gt;</button>
+  </section>
+</body>
+
+<script src="src/script.js"></script>
+
+</html>
