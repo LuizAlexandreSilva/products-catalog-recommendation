@@ -1,7 +1,7 @@
 function init() {
-  loadData('http://localhost:3334/recommendations/mostpopular', 'most-popular-section');
+  loadData('http://localhost:3334/recommendations/mostpopular?maxProducts=16', 'most-popular-section');
 
-  loadData('http://localhost:3334/recommendations/pricereduction', 'price-reduction-section');
+  loadData('http://localhost:3334/recommendations/pricereduction?maxProducts=16', 'price-reduction-section');
 }
 
 function loadData(url, elementId) {
