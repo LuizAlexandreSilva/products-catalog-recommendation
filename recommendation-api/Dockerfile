@@ -6,4 +6,4 @@ WORKDIR /usr/src/app
 
 COPY package.json .
 
-EXPOSE 3333
+EXPOSE 3334

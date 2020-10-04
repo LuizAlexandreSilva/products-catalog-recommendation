@@ -1,0 +1,54 @@
+version: '3'
+
+services:
+  catalog-api:
+    build:
+      context: ./catalog-api
+    image: catalog-api
+    container_name: catalog-api
+    volumes:
+      - ./catalog-api/:/usr/src/app
+    ports:
+      - 3333:3333
+    command: yarn dev
+    environment:
+      NODE_ENV: ${NODE_ENV}
+    depends_on:
+      - postgres
+    networks:
+      - backend
+
+  recommendation-api:
+    build:
+      context: ./recommendation-api
+    image: recommendation-api
+    container_name: recommendation-api
+    volumes:
+      - ./recommendation-api/:/usr/src/app
+    ports:
+      - 3334:3334
+    command: yarn start
+    depends_on:
+      - catalog-api
+    networks:
+      - backend
+
+  postgres:
+    image: postgres:12.2-alpine
+    container_name: linx-postgres
+    ports:
+      - 5432:5432
+    command: postgres -c idle_in_transaction_session_timeout='1min'
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      PGDATA: /var/lib/postgresql/data
+    volumes:
+      - ./data:/var/lib/postgresql/data
+    networks:
+      - backend
+
+networks:
+  backend:
+    driver: bridge
