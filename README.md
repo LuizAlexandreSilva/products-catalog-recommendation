@@ -1,6 +1,7 @@
 # Dependências
 * Node v12.18.4 ou superior
 * Docker version 19.03.13 ou superior
+* Docker-compose version 1.26.2 ou superior
 
 # Como utilizar
 
